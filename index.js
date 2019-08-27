@@ -13,6 +13,7 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
     var buttonInnerHTML = this.innerHTML;
 // if a button press was detected, then it sends the button that was pressed
     makeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
 
 
   });
@@ -25,6 +26,7 @@ document.addEventListener("keydown", function(){
 
   // if a keypress was detected, then it sends the key that was sent
   makeSound(event.key);
+  buttonAnimation(event.key);
 });
 
 function makeSound(key){
@@ -73,4 +75,17 @@ function makeSound(key){
 
   }
 
+
+
+
+
+}
+
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+
+  setTimeout(function(){
+    activeButton.classList.remove("pressed")
+  }, 100);
 }
